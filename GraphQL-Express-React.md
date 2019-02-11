@@ -1,8 +1,29 @@
-# Design & Project Setup
+# Table of contents
+- [Design&Project-Setup](Design&Project-Setup)
+- [Schema&Resolvers](#Schema&Resolvers)
+- [Types&Data](#Types&Data)
+- [GraphQL+MongoDB](#GraphQL+MongoDB)
+- [Adding-Relations](#Adding-Relations)
+- [Dynamic-Relations](#Dynamic-Relations)
+- [Adding-Booking](#Adding-Booking)
+- [Refactoring-our-Code](#Refactoring-our-Code)
+- [Adding-User-Authentication](#Adding-User-Authentication)
+- [The-react-Frontend](#The-react-Frontend)
+- [Hitting-the-API](#Hitting-the-API)
+- [Using-the-Token](#Using-the-Token)
+- [Hitting-the-API](#Hitting-the-API)
+- [Adding-a-Modal](#Adding-a-Modal)
+- [Adding-Events](#Adding-Events)
+- [Adding-Event-Features](#Adding-Event-Features)
+- [Using-Dataloader](#Using-Dataloader)
+- [Improving-Queries&Bugfixing](#Improving-Queries&Bugfixing)
+
+
+## Design&Project-Setup
 
 > npm install --save express body-parser express-graphql graphql
 
-# Schema & Resolvers
+## Schema&Resolvers
 
 ```javascript
  schema {
@@ -54,7 +75,7 @@ rootValue: {
 graphiql: true;
 ```
 
-# Types and Data
+## Types&Data
 
 ```javascript
 // defined a schema in graphql

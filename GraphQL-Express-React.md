@@ -23,6 +23,8 @@
 
 > npm install --save express body-parser express-graphql graphql
 
+[back](#table-of-contents)
+
 # Schema&Resolvers
 
 ```javascript
@@ -75,6 +77,8 @@ rootValue: {
 graphiql: true;
 ```
 
+[back](#table-of-contents)
+
 # Types&Data
 
 ```javascript
@@ -117,6 +121,8 @@ type RootMutation {createEvent(eventInput:EventInput): Event}
 ![createEventResovler](./img/createEventResovler.png)
 
 ![eventResolver](./img/eventResolver.png)
+
+[back](#table-of-contents)
 
 # GraphQL + MongoDB
 
@@ -190,6 +196,8 @@ createEvent: args => {
     });
 }
 ```
+
+[back](#table-of-contents)
 
 # Adding Relations
 
@@ -290,6 +298,8 @@ return event
 
 > **tips**: Every time you use a promise in the graphQL buildSchema you all need return this promise to let graphQL wait for his ending rather than ended up early
 
+[back](#table-of-contents)
+
 # Dynamic Relations
 
 ```javascript
@@ -367,6 +377,8 @@ const user = async userId => {
 };
 ```
 
+[back](#table-of-contents)
+
 # Adding Booking
 
 ```javascript
@@ -409,6 +421,8 @@ bookEvent: async args => {
 
 ```
 
+[back](#table-of-contents)
+
 # Refactoring our Code
 
 ```javascript
@@ -437,6 +451,8 @@ const rootResolver = {
 
 module.exports = rootResolver;
 ```
+
+[back](#table-of-contents)
 
 # Adding User Authentication
 
@@ -520,6 +536,7 @@ module.exports = (req, res, next) => {
 // use the middleware
 app.use(isAuth)****
 ```
+[back](#table-of-contents)
 
 # The react Frontend
 
@@ -537,6 +554,8 @@ app.use(isAuth)****
   const password = this.passwordEl.current.value;
 
 ```
+
+[back](#table-of-contents)
 
 # Hitting the API
 
@@ -597,6 +616,8 @@ sumbmitHandler = event => {
     });
 };
 ```
+
+[back](#table-of-contents)
 
 # Using the Token
 
@@ -722,6 +743,8 @@ fetch("http://localhost:8000/graphql", {
 </AuthContext.Consumer>
 ```
 
+[back](#table-of-contents)
+
 # Adding a Modal
 > Creating an Modal and backDrop component
 ```javascript
@@ -764,11 +787,19 @@ const backdrop = props => <div className="backdrop" />;
 }
 ```
 
+[back](#table-of-contents)
+
 # Adding Events
+
+[back](#table-of-contents)
 
 # Adding Event Features
 
+[back](#table-of-contents)
+
 # Using Dataloader
+
+[back](#table-of-contents)
 
 # Improving Queries & Bugfixing
 ```javascript
@@ -790,3 +821,4 @@ deleteBookingHandler = bookingId =>{
   }
 }
 ```
+[back](#table-of-contents)

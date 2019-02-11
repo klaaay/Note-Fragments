@@ -1,29 +1,29 @@
 # Table of contents
-- [Design&Project-Setup](Design&Project-Setup)
-- [Schema&Resolvers](#Schema&Resolvers)
-- [Types&Data](#Types&Data)
-- [GraphQL+MongoDB](#GraphQL+MongoDB)
-- [Adding-Relations](#Adding-Relations)
-- [Dynamic-Relations](#Dynamic-Relations)
-- [Adding-Booking](#Adding-Booking)
-- [Refactoring-our-Code](#Refactoring-our-Code)
-- [Adding-User-Authentication](#Adding-User-Authentication)
-- [The-react-Frontend](#The-react-Frontend)
-- [Hitting-the-API](#Hitting-the-API)
-- [Using-the-Token](#Using-the-Token)
-- [Hitting-the-API](#Hitting-the-API)
-- [Adding-a-Modal](#Adding-a-Modal)
-- [Adding-Events](#Adding-Events)
-- [Adding-Event-Features](#Adding-Event-Features)
-- [Using-Dataloader](#Using-Dataloader)
-- [Improving-Queries&Bugfixing](#Improving-Queries&Bugfixing)
+- [Table of contents](#table-of-contents)
+- [Design&Project-Setup](#designproject-setup)
+- [Schema&Resolvers](#schemaresolvers)
+- [Types&Data](#typesdata)
+- [GraphQL + MongoDB](#graphql--mongodb)
+- [Adding Relations](#adding-relations)
+- [Dynamic Relations](#dynamic-relations)
+- [Adding Booking](#adding-booking)
+- [Refactoring our Code](#refactoring-our-code)
+- [Adding User Authentication](#adding-user-authentication)
+- [The react Frontend](#the-react-frontend)
+- [Hitting the API](#hitting-the-api)
+- [Using the Token](#using-the-token)
+- [Adding a Modal](#adding-a-modal)
+- [Adding Events](#adding-events)
+- [Adding Event Features](#adding-event-features)
+- [Using Dataloader](#using-dataloader)
+- [Improving Queries & Bugfixing](#improving-queries--bugfixing)
 
 
-## Design&Project-Setup
+# Design&Project-Setup
 
 > npm install --save express body-parser express-graphql graphql
 
-## Schema&Resolvers
+# Schema&Resolvers
 
 ```javascript
  schema {
@@ -75,7 +75,7 @@ rootValue: {
 graphiql: true;
 ```
 
-## Types&Data
+# Types&Data
 
 ```javascript
 // defined a schema in graphql

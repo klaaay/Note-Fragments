@@ -1,3 +1,15 @@
+- [Code-Formatting & Beautify](#code-formatting--beautify)
+- [Tools-For-Markdown & Pdf](#tools-for-markdown--pdf)
+- [Code Running Helper & Test Tools](#code-running-helper--test-tools)
+- [Common Code Snippets](#common-code-snippets)
+- [Effective Work Tools](#effective-work-tools)
+- [Local Server](#local-server)
+- [Tools for python](#tools-for-python)
+- [Sass](#sass)
+- [Vue](#vue)
+- [React](#react)
+- [Others](#others)
+
 # Code-Formatting & Beautify
 + **Beautify**: *Beautify code in place for VS Code*
 + **Formatting Toggle**: *A VS Code extension that allows you to toggle the formatter (Prettier, Beautify, …) ON and OFF with a simple click.*

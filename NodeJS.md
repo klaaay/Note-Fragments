@@ -26,7 +26,7 @@
 # NODE's Event Loop
 + Single threaded.
 + Support concurrency via events & callbacks.(通过事件和回调支持并发)
-+ EventEmitter class is used to bind events and listeners.
++ EventEmitter class is used to bind events and listeners.   
 ![](./img/EventLoop.png)
 
 # Best Types of the Projects for node

@@ -59,3 +59,160 @@
 # 理解CSS相关单位
 ![PrecentRelative](./img/PrecentRelative.png)
 ![recommendedUnit.png](./img/recommendedUnit.png)
+
+# 网页自适应
++ **理解html viewport meta标签**
+
+> +  \<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scable=yes[default]/no, maximum-scale=2.0, minimum-scale=0.5>  
+
++ **媒体查询横屏竖屏(orientation: portrait/landscape)**
+
+# 表单元素选择器
+![AttributeSelector](./img/AttributeSelector.png)
+
+# 文字和字体
+![fonts](./img/fonts.png)
++ **本地引入字体**
+```css
+@font-face {
+  font-family：ExampleFont;
+  src：url（/path/to/fonts/examplefont.woff）format（'woff'），
+       url（/path/to/fonts/examplefont.eot）format（'eot'）;
+  font-weight：400;
+  font-style：normal;
+  font-display：fallback;
+}
+```
++ **一些不常用的属性**
+> + letter-spac: px/em
+> + white-space:pre/pre-wrap/pre-line/no-wrap
+> + line-height: 2（倍数） / px
+> + text-decoration: underline/overline/ line-through
+> + text-decoration: underline dotted red
+> + text-shadow: 5 px 5px 2px gray
+
++ **简写**
+> + font:italic(`style`) small-caps(`variant`) 700(`weight`) 1.2rem/2(`size/line-height`) "AnonymousPro", sans-serif(`family`);
+
++ **font-display**
+> + [ auto | block | swap | fallback | optional ]
+> + auto字体显示策略由用户代理定义。
+block给字体面临一个短暂的周期和无限的交换周期。
+> + swap为字体提供了一个非常小的块周期和无限的交换周期。
+> + fallback为字体提供了一个非常小的块周期和短暂的交换周期。
+> + optional为字体提供了一个非常小的块周期并且没有交换周期。
+
+# FlexBox
+![](./img/flexBox.png)
+
++ **order: 根据flexBox的方向数字从小到大排列，默认的值是**
+
++ **align-self: 重写align-items**
+
++ **flex-grow/flex=shrink/flex-basis**
+
+# CSS-Grid
++ **定义container容器网格**
+```css
+grid-template-column: repeat(4, 25%);
+grid-template-rows: 5rem auto;
+grid-template-rows: 5rem minmax(10px, auto) 100px;
+
+grid-template-areas: "header header header header"
+                      "side side main main"
+                      "footer footer footer footer"
+
+grid-template-rows: 3.5rem auto fit-content(8rem);
+/*fit-content: 该区域大小不会大于8rem*/
+```
+
++ **根据容器划分的网格自定义子元素占的区域**
+```css
+grid-column-start: 3;
+grid-column-end: 5;
+grid-column:3 / 5;
+grid-area: header;
+
+grid-row-start: 1;
+grid-row-end: 3;
+grid-row-end: span 2;
+grid-row:1 / 3
+grid-area: footer;
+```
+> 网格可以被重复使用
+
++ **网格间隙定义**
+```css
+grid-column-gap: 20px;
+grid-row-gap: 10px;
+```
+
++ **容器元素以及定义子元素的排列方向**
+```css
+justify-content: strech/center/start/end
+justify-items: strech/center/start/end 
+/*横向*/
+align-content: strech/center/start/end 
+align-items: strech/center/start/end 
+/*竖向*/
+```
+
++ **子元素对齐**
+```css
+justify-self: strech/center/start/end
+align-self: strech/center/start/end
+```
+
++ **Grid容器的自动流动（autoflow）**
+```css
+grid-auto-rows: minmax(8rem, auto)
+grid-auto-colums: 5rem
+grid-auto-flow: column
+```
+
++ Grid容器元素根据view port自动填充
+```css
+grid-template-columns: repeat(auto-fill/auto-fit,10rem);
+```
+
+# CSS Transforming
++ **旋转元素**
+> + tranform-origin: 50% 50% (center)
+> + trnaform: rotateZ(45deg)
+
++ **平移元素**
+> + transformX(3.5rem) transformY(-1rem) 
+
++ **歪斜元素**
+> + skew(20deg)
+
++ **放缩元素**
+> + scale(1.5)
+
++ **透视，3D变换，3D遮挡显示**
+
+# 动画效果
++ **transition: opcity(需要动画效果的属性) 200ms(动画效果持续的时间) ease-out(动画效果的方式) 1s(延迟时间)**
+
++ **CSS-Animation**
+```css
+@keyframes wiggle {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    ...
+  }
+  100% {
+    transform: rotateZ(10deg);
+  }
+}
+
+.main-nav__item--cta {
+  animation: wiggle 200ms 3s 8 ease-out  alternate/forwards/backwards;
+}
+```
+
+```javascript
+ctaButton.addEventListener('animationstart/animationend/')
+```

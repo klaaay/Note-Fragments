@@ -1,4 +1,13 @@
-
+- [什么是Redux?](#%E4%BB%80%E4%B9%88%E6%98%AFredux)
+  - [Redux四个主要构建块组成](#redux%E5%9B%9B%E4%B8%AA%E4%B8%BB%E8%A6%81%E6%9E%84%E5%BB%BA%E5%9D%97%E7%BB%84%E6%88%90)
+- [什么是React’s Context API?](#%E4%BB%80%E4%B9%88%E6%98%AFreacts-context-api)
+  - [Context Object](#context-object)
+  - [Context provider](#context-provider)
+  - [Context Consumer](#context-consumer)
+    - [使用Context.Consumer](#%E4%BD%BF%E7%94%A8contextconsumer)
+    - [使用static contextType](#%E4%BD%BF%E7%94%A8static-contexttype)
+- [通过Context更新状态](#%E9%80%9A%E8%BF%87context%E6%9B%B4%E6%96%B0%E7%8A%B6%E6%80%81)
+- [React的Context API会取代Redux吗?](#react%E7%9A%84context-api%E4%BC%9A%E5%8F%96%E4%BB%A3redux%E5%90%97)
 # 什么是Redux?
 > Redux用于在集中位置管理React应用程序的状态, 从技术上讲，Redux不仅限于在React应用程序中使用 - 实际上还有其他技术的实现 (NgRx for Angular)
 

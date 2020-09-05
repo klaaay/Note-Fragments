@@ -1,4 +1,5 @@
 # Table of contents
+
 - [Table of contents](#table-of-contents)
 - [Design&Project-Setup](#designproject-setup)
 - [Schema&Resolvers](#schemaresolvers)
@@ -17,7 +18,6 @@
 - [Adding Event Features](#adding-event-features)
 - [Using Dataloader](#using-dataloader)
 - [Improving Queries & Bugfixing](#improving-queries--bugfixing)
-
 
 # Design&Project-Setup
 
@@ -118,9 +118,9 @@ type RootMutation {createEvent(eventInput:EventInput): Event}
 }
 ```
 
-![createEventResovler](./img/createEventResovler.png)
+![createEventResovler](.../img/createEventResovler.png)
 
-![eventResolver](./img/eventResolver.png)
+![eventResolver](.../img/eventResolver.png)
 
 [back](#table-of-contents)
 
@@ -206,19 +206,19 @@ createEvent: args => {
 const userSchema = new Schema({
   email: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   createdEvents: [
     {
       type: Schema.Types.ObjectId,
       // Related to Event Schema
-      ref: "Event"
-    }
-  ]
+      ref: "Event",
+    },
+  ],
 });
 ```
 
@@ -273,13 +273,13 @@ createUser: args => {
 let createdEvent;
 return event
   .save()
-  .then(result => {
+  .then((result) => {
     // Get this createdEvent in this promise resolver
     createdEvent = { ...result._doc, _id: event.id };
     // return a user Promise
     return User.findById("5c2874679bfa0d426c291614");
   })
-  .then(user => {
+  .then((user) => {
     if (!user) {
       throw new Error("User is not found");
     }
@@ -287,11 +287,11 @@ return event
     user.createdEvents.push(event);
     return user.save();
   })
-  .then(result => {
+  .then((result) => {
     // retrun the createdEvent
     return createdEvent;
   })
-  .catch(err => {
+  .catch((err) => {
     throw err;
   });
 ```
@@ -330,46 +330,46 @@ events: () => {
 
 ```javascript
 // insted of using populate function, using the self defined function to get the data from the ref Schema
-const Events = eventIds => {
+const Events = (eventIds) => {
   return Event.find({ _id: { $in: eventIds } })
-    .then(events => {
-      return events.map(event => {
+    .then((events) => {
+      return events.map((event) => {
         return {
           ...event._doc,
           _id: event.id,
           date: new Date(event._doc.date).toISOString(),
           // use bind for passing the arguments
-          creator: user.bind(this, event.creator)
+          creator: user.bind(this, event.creator),
         };
       });
     })
-    .catch(err => {
+    .catch((err) => {
       throw err;
     });
 };
 
-const user = userId => {
+const user = (userId) => {
   return User.findById(userId)
-    .then(user => {
+    .then((user) => {
       return {
         ...user._doc,
         _id: user.id,
-        createdEvents: Events.bind(this, user._doc.createdEvents)
+        createdEvents: Events.bind(this, user._doc.createdEvents),
       };
     })
-    .catch(err => {
+    .catch((err) => {
       throw err;
     });
 };
 
 // change the function into async await syntax
-const user = async userId => {
+const user = async (userId) => {
   try {
     const user = await User.findById(userId);
     return {
       ...user._doc,
       _id: user.id,
-      createdEvents: Events.bind(this, user._doc.createdEvents)
+      createdEvents: Events.bind(this, user._doc.createdEvents),
     };
   } catch (err) {
     throw err;
@@ -427,12 +427,12 @@ bookEvent: async args => {
 
 ```javascript
 // refactoring all the transformed model logic in one js file
-const transformEvent = event => {
+const transformEvent = (event) => {
   return {
     ...event._doc,
     _id: event.id,
     date: dateToString(event._doc.date),
-    creator: user.bind(this, event._doc.creator)
+    creator: user.bind(this, event._doc.creator),
   };
 };
 ```
@@ -446,7 +446,7 @@ const eventsResolver = require("./events");
 const rootResolver = {
   ...authResolver,
   ...bookingResolver,
-  ...eventsResolver
+  ...eventsResolver,
 };
 
 module.exports = rootResolver;
@@ -483,18 +483,18 @@ login: async ({ email, password }) => {
   const token = jwt.sign(
     {
       userId: user.id,
-      email: user.email
+      email: user.email,
     },
     "secret",
     {
-      expiresIn: "1h"
+      expiresIn: "1h",
     }
   );
   // return the info
   return {
     userId: user.id,
     token: token,
-    tokenExpiration: 1
+    tokenExpiration: 1,
   };
 };
 ```
@@ -536,6 +536,7 @@ module.exports = (req, res, next) => {
 // use the middleware
 app.use(isAuth)****
 ```
+
 [back](#table-of-contents)
 
 # The react Frontend
@@ -561,7 +562,7 @@ app.use(isAuth)****
 
 ```javascript
 // Sending a request to the graplQL API
-sumbmitHandler = event => {
+sumbmitHandler = (event) => {
   event.preventDefault();
   const email = this.emailEl.current.value;
   const password = this.passwordEl.current.value;
@@ -579,7 +580,7 @@ sumbmitHandler = event => {
             tokenExpiration
           }
         }
-      `
+      `,
   };
 
   if (!this.state.isLogin) {
@@ -591,7 +592,7 @@ sumbmitHandler = event => {
               email
             }
           }
-        `
+        `,
     };
   }
 
@@ -599,19 +600,19 @@ sumbmitHandler = event => {
     method: "POST",
     body: JSON.stringify(requestBody),
     headers: {
-      "Content-type": "application/json"
-    }
+      "Content-type": "application/json",
+    },
   })
-    .then(res => {
+    .then((res) => {
       if (res.status !== 200 && res.status !== 201) {
         throw new Error("Failed!");
       }
       return res.json();
     })
-    .then(resData => {
+    .then((resData) => {
       console.log(resData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
@@ -629,27 +630,27 @@ export default React.createContext({
   token: null,
   userId: null,
   login: () => {},
-  logout: () => {}
+  logout: () => {},
 });
 ```
 
 ```javascript
 state = {
   token: null,
-  userId: null
+  userId: null,
 };
 
 login = (token, userId, tokenExpiration) => {
   this.setState({
     token,
-    userId
+    userId,
   });
 };
 
 logout = () => {
   this.setState({
     token: null,
-    userId: null
+    userId: null,
   });
 };
 
@@ -659,7 +660,7 @@ logout = () => {
     token: this.state.token,
     userId: this.state.userId,
     login: this.login,
-    logout: this.logout
+    logout: this.logout,
   }}
 >
   <Navigation />
@@ -713,7 +714,7 @@ fetch("http://localhost:8000/graphql", {
 ```javascript
 // Using AuthContext.Consumer Component with "context=>{}" function to access the AuthContext's data
 <AuthContext.Consumer>
-  {context => {
+  {(context) => {
     return (
       <header className="main-navigation">
         <div className="main-navigation__logo">
@@ -746,7 +747,9 @@ fetch("http://localhost:8000/graphql", {
 [back](#table-of-contents)
 
 # Adding a Modal
+
 > Creating an Modal and backDrop component
+
 ```javascript
 // Modal component
 <div className="modal">
@@ -758,31 +761,45 @@ fetch("http://localhost:8000/graphql", {
     {props.canCancel && <button onClick={props.onCancel}>Cancel</button>}
     {props.canConfirm && <button onClick={props.onConfirm}>Confirm</button>}
   </section>
-</div>
+</div>;
 
 // BackDrop component
-const backdrop = props => <div className="backdrop" />;
+const backdrop = (props) => <div className="backdrop" />;
 ```
+
 ```css
 # the css of the backdrop
 # vh: 相对于视口的高度。视口被均分为100单位的vh
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
 }
 ```
 
 ```css
-# Media Inquiries
-# Using this style while the with is larger than 768px
-@media (min-width: 768px) {
+#
+  Media
+  Inquiries
+  #
+  Using
+  this
+  style
+  while
+  the
+  with
+  is
+  larger
+  than
+  768px
+  @media
+  (min-width: 768px) {
   .modal {
-      width: 30rem;
-      left: calc((100% - 30rem) / 2);
+    width: 30rem;
+    left: calc((100% - 30rem) / 2);
   }
 }
 ```
@@ -802,12 +819,13 @@ const backdrop = props => <div className="backdrop" />;
 [back](#table-of-contents)
 
 # Improving Queries & Bugfixing
+
 ```javascript
 // the variable inside the query string
-deleteBookingHandler = bookingId =>{
-  this.setState({isLoading: true});
+deleteBookingHandler = (bookingId) => {
+  this.setState({ isLoading: true });
   const requestBody = {
-    query:`
+    query: `
       mutation CancelBooking($id: ID!){
         cancelBooking(bookingId: $id){
           _id
@@ -816,9 +834,10 @@ deleteBookingHandler = bookingId =>{
       }
     `,
     variables: {
-      id: bookingId
-    }
-  }
-}
+      id: bookingId,
+    },
+  };
+};
 ```
+
 [back](#table-of-contents)
